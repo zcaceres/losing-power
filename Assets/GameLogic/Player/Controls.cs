@@ -9,10 +9,6 @@ public class Controls : MonoBehaviour {
 		flashlightController = transform.Find("Flashlight").gameObject.GetComponent<FlashlightController>();
 	}
 
-	void Start () {
-
-	}
-
 	void Update () {
 		// Set state of Flashlight child object on left click
 		if (Input.GetMouseButtonDown(0)) {

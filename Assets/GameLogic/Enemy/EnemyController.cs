@@ -6,14 +6,18 @@ public class EnemyController : MonoBehaviour {
 	private Transform player;
 	private UnityEngine.AI.NavMeshAgent agent;
 	private bool lit;
+
 	void Awake () {
 		player = GameObject.FindWithTag("Player").transform;
 		agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
 	}
 
-
 	void Start () {
 		lit = false;
+	}
+
+	public void GotLit (bool isLit) {
+		lit = isLit;
 	}
 
 	void FollowPlayer () {
