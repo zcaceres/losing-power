@@ -6,6 +6,7 @@ public class EnemyController : MonoBehaviour {
 	private Transform player;
 	private UnityEngine.AI.NavMeshAgent agent;
 	private bool lit;
+	private bool shouldWander;
 
 	void Awake () {
 		player = GameObject.FindWithTag("Player").transform;
@@ -28,8 +29,19 @@ public class EnemyController : MonoBehaviour {
 		agent.destination = agent.transform.position;
 	}
 
-	// Update is called once per frame
+	public void ShouldWander (bool wander) {
+		shouldWander = wander;
+	}
+
+	void Wander () {
+		Debug.Log("I'm wandering");
+	}
+
 	void Update () {
+		if (shouldWander) {
+			Wander();
+			return;
+		}
 		if (!lit) {
 			FollowPlayer();
 		} else {
