@@ -30,4 +30,8 @@ public class FlashlightController : MonoBehaviour {
 		lightSFX.SetActive(isOn);
 	}
 
+	public bool IsLightOn () {
+		return isOn;
+	}
+
 }

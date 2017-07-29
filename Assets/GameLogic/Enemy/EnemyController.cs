@@ -7,10 +7,14 @@ public class EnemyController : MonoBehaviour {
 	private UnityEngine.AI.NavMeshAgent agent;
 	private bool lit;
 	private bool shouldWander;
+	private static LightManager lm;
+	private static GameObject[] lights;
 
 	void Awake () {
 		player = GameObject.FindWithTag("Player").transform;
 		agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+		lm = GameObject.FindWithTag("GameController").GetComponent<GameManager>().GetLightManager();
+		lights = lm.GetAllLights();
 	}
 
 	void Start () {
@@ -35,6 +39,13 @@ public class EnemyController : MonoBehaviour {
 
 	void Wander () {
 		Debug.Log("I'm wandering");
+		int ind;
+		if(agent.destination == null || agent.remainingDistance <= 0) {
+			do {
+				ind = Random.Range(0,lights.Length-1);
+			} while (lights[ind].GetComponent<FlashlightController>().IsLightOn());
+			agent.destination = lights[ind].transform.position;
+		}
 	}
 
 	void Update () {

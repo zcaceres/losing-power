@@ -5,7 +5,7 @@ using UnityEngine;
 public class LightManager : MonoBehaviour {
 	static GameObject[] lights;
 
-	GameObject[] GetAllLights () {
+	public GameObject[] GetAllLights () {
 		return GameObject.FindGameObjectsWithTag("Light");
 	}
 
