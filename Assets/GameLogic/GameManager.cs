@@ -5,19 +5,29 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 	private static EnemyManager enemyManager;
 	private static LightManager lightManager;
+	public bool isGameOver = true;
 
 	void Awake () {
 		enemyManager = GetComponent<EnemyManager>();
 		lightManager = GetComponent<LightManager>();
 	}
-	// Use this for initialization
-	void Start () {
 
+	void Start () {
+		isGameOver = false;
+		var coroutine = Timer();
+		StartCoroutine(coroutine);
 	}
 
-	// Update is called once per frame
-	void Update () {
-
+	// Game Timer for triggering lights
+	IEnumerator Timer() {
+		Debug.Log("starting timer");
+		while (!isGameOver) {
+			yield return new WaitForSeconds(6.0f);
+			lightManager.ChangeLights();
+			yield return new WaitForSeconds(6.0f);
+			lightManager.ChangeLights();
+		}
+		Debug.Log("ending timer");
 	}
 
 	public EnemyManager GetEnemyManager() {

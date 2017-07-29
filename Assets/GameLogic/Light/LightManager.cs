@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LightManager : MonoBehaviour {
 	static GameObject[] lights;
+	static GameManager gameManager;
+
 
 	GameObject[] GetAllLights () {
 		return GameObject.FindGameObjectsWithTag("Light");
@@ -13,24 +15,9 @@ public class LightManager : MonoBehaviour {
 		lights = GetAllLights();
 	}
 
-	void Start () {
-		var coroutine = Timer();
-		StartCoroutine(coroutine);
-	}
-
-	IEnumerator Timer() {
-		Debug.Log("starting timer");
-		yield return new WaitForSeconds(2.0f);
-		Debug.Log("ending timer");
-		ChangeLights(lights);
-		yield return new WaitForSeconds(2.0f);
-		ChangeLights(lights);
-	}
-
-	void ChangeLights(GameObject[] lights) {
+	public void ChangeLights() {
 		for (var i = 0; i < lights.Length; i++) {
 			var probability = Random.Range(0f, 1.0f);
-			Debug.Log(probability);
 			if (probability > 0.5f) {
 				lights[i].GetComponent<FlashlightController>().ToggleLight();
 			}

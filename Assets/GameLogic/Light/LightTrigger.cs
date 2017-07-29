@@ -10,6 +10,12 @@ public class LightTrigger : MonoBehaviour {
 		}
 	}
 
+	// protected virtual void OnTriggerStay (Collider other) {
+	// 	if (other.tag == "") {
+	//
+	// 	}
+	// }
+
 	protected virtual void OnTriggerExit (Collider other) {
 		if (other.tag == "Enemy") {
 			other.GetComponent<EnemyController>().GotLit(false);

@@ -20,11 +20,17 @@ public class EnemyManager : MonoBehaviour {
 		}
 	}
 
+	public void ReactivateEnemies () {
+		for (var i = 0; i < enemies.Length; i++) {
+			var controller = enemies[i].GetComponent<EnemyController>();
+			controller.GotLit(false);
+		}
+	}
+
 	public void TurnOnPursuit () {
 		for (var i = 0; i < enemies.Length; i++) {
 			var controller = enemies[i].GetComponent<EnemyController>();
 			controller.ShouldWander(false);
 		}
 	}
-
 }
