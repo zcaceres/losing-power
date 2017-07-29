@@ -351,10 +351,6 @@ Prefab:
       propertyPath: enemyManager
       value: 
       objectReference: {fileID: 1406997230}
-    - target: {fileID: 1725781557296642, guid: 3569504449864478ca2ad7b1965753bf, type: 2}
-      propertyPath: m_Name
-      value: LightTrigger
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3569504449864478ca2ad7b1965753bf, type: 2}
   m_IsPrefabParent: 0
@@ -640,22 +636,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 60a21cf3947e74d83acfcac6e7e9c7bb, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1634198671 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1555703174355410, guid: 3569504449864478ca2ad7b1965753bf,
-    type: 2}
-  m_PrefabInternal: {fileID: 399914861}
---- !u!114 &1634198672
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1634198671}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d367b9d2f0f094d199452ca371eae06d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1668326385
 Prefab:
   m_ObjectHideFlags: 0

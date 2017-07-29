@@ -30,7 +30,8 @@ public class LightManager : MonoBehaviour {
 	void ChangeLights(GameObject[] lights) {
 		for (var i = 0; i < lights.Length; i++) {
 			var probability = Random.Range(0f, 1.0f);
-			if (probabilty > 0.5f) {
+			Debug.Log(probability);
+			if (probability > 0.5f) {
 				lights[i].GetComponent<FlashlightController>().ToggleLight();
 			}
 		}
