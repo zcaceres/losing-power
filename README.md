@@ -3,8 +3,8 @@
 Banner image
 
 Made by:
-- Michael Norohona (github / twitter)
+- Michael Noronha (mtn)
 - Zach Caceres (zcaceres / @zachcaceres)
-- Nero Gao (github / twitter)
+- Nero Gao (yuangaonyc)
 
 Description and screenshots here.
