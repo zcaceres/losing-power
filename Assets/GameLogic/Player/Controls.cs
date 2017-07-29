@@ -12,7 +12,7 @@ public class Controls : MonoBehaviour {
 	void Update () {
 		// Set state of Flashlight child object on left click
 		if (Input.GetMouseButtonDown(0)) {
-			flashlightController.ToggleFlashlight();
+			flashlightController.ToggleLight();
 		}
 	}
 }

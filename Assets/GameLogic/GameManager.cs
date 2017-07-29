@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 	private static EnemyManager enemyManager;
+	private static LightManager lightManager;
 
 	void Awake () {
 		enemyManager = GetComponent<EnemyManager>();
+		lightManager = GetComponent<LightManager>();
 	}
 	// Use this for initialization
 	void Start () {
@@ -20,6 +22,10 @@ public class GameManager : MonoBehaviour {
 
 	public EnemyManager GetEnemyManager() {
 		return enemyManager;
+	}
+
+	public LightManager GetLightManager() {
+		return lightManager;
 	}
 
 }
