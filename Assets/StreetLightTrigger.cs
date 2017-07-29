@@ -3,12 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class StreetLightTrigger : LightTrigger {
-		private EnemyManager enemyManager;
+		public EnemyManager enemyManager;
 
-		void Awake() {
-			enemyManager = GameObject.FindWithTag("GameController")
-				.GetComponent<GameManager>().GetEnemyManager();
-		}
+		// TODO Make awake method
 
 		protected virtual void OnTriggerEnter (Collider other) {
 			return;
