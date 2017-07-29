@@ -7,10 +7,14 @@ public class EnemyController : MonoBehaviour {
 	private UnityEngine.AI.NavMeshAgent agent;
 	private bool lit;
 	private bool shouldWander;
+	private const int WALK_RADIUS = 50;
+	private UnityEngine.AI.NavMeshPath path;
+
 
 	void Awake () {
 		player = GameObject.FindWithTag("Player").transform;
 		agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+		path = new UnityEngine.AI.NavMeshPath();
 	}
 
 	void Start () {
@@ -31,10 +35,32 @@ public class EnemyController : MonoBehaviour {
 
 	public void ShouldWander (bool wander) {
 		shouldWander = wander;
+		if(wander == false){
+			agent.destination = player.position;
+		}
 	}
 
 	void Wander () {
 		Debug.Log("I'm wandering");
+
+		bool reachedDestination = false;
+		if (!agent.pathPending) {
+				if (agent.remainingDistance <= agent.stoppingDistance) {
+						if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f) {
+							reachedDestination = true;
+						}
+				}
+		}
+		float dist = Vector3.Distance(agent.destination,player.position);
+		if(dist < 10.0f || reachedDestination) {
+			Debug.Log("I'm in wander and finding a new destination");
+			Vector3 randomLocation;
+			do {
+				randomLocation = Random.insideUnitSphere * WALK_RADIUS;
+				randomLocation.y = 0;
+			} while(!UnityEngine.AI.NavMesh.CalculatePath(transform.position,randomLocation,UnityEngine.AI.NavMesh.AllAreas,path));
+			agent.destination = randomLocation;
+		}
 	}
 
 	void Update () {
