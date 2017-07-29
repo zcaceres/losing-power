@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Controls : MonoBehaviour {
-	private bool flashlightOn;
+	private FlashlightController flashlightController;
+
+	void Awake () {
+		flashlightController = transform.Find("Flashlight").gameObject.GetComponent<FlashlightController>();
+	}
+
 	void Start () {
-		flashlightOn = false;
+
 	}
 
 	void Update () {
+		// Set state of Flashlight child object on left click
 		if (Input.GetMouseButtonDown(0)) {
-			flashlightOn = !flashlightOn;
-			Debug.Log("Flashlight is: " + flashlightOn);
+			flashlightController.ToggleFlashlight();
 		}
 	}
 }
