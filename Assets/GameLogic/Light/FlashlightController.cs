@@ -7,11 +7,13 @@ public class FlashlightController : MonoBehaviour {
 	protected GameObject lightTrigger;
 	protected GameObject lightSFX;
 	protected EnemyManager enemyManager;
+	protected AudioSource lightSound;
 
 	void Awake () {
 		// Get child components of Flashlight prefab
 		lightTrigger = transform.Find("LightTrigger").gameObject;
 		lightSFX = transform.Find("Light").gameObject;
+		lightSound = GetComponent<AudioSource>();
 	}
 
 	void Start () {
@@ -27,6 +29,7 @@ public class FlashlightController : MonoBehaviour {
 		if (!isOn) {
 			enemyManager.ReactivateEnemies();
 		}
+		lightSound.Play();
 		EnableLightTrigger(isOn);
 		EnableLight(isOn);
 	}

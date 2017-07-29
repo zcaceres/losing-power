@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StreetLightController : FlashlightController {
 	private UnityEngine.AI.NavMeshObstacle obstacle;
-
+	private AudioSource flickerSound;
 
 	void Start () {
 		obstacle = lightTrigger.GetComponent<UnityEngine.AI.NavMeshObstacle>();
@@ -14,11 +14,13 @@ public class StreetLightController : FlashlightController {
 		isOn = !isOn;
 		var flicker = Flicker();
 		StartCoroutine(flicker);
+		lightSound.Play();
 	}
 
 	// Creates flicker effect
 	IEnumerator Flicker () {
 		EnableLight(isOn);
+		lightSound.Play();
 		yield return new WaitForSeconds(Random.Range(0, 0.3f));
 		EnableLight(!isOn);
 		yield return new WaitForSeconds(Random.Range(0, 0.1f));

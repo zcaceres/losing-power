@@ -20,14 +20,14 @@ public class GameManager : MonoBehaviour {
 
 	// Game Timer for triggering lights
 	IEnumerator Timer() {
-		Debug.Log("starting timer");
+		Debug.Log("---START GAME---");
 		while (!isGameOver) {
 			yield return new WaitForSeconds(6.0f);
 			lightManager.ChangeLights();
 			yield return new WaitForSeconds(6.0f);
 			lightManager.ChangeLights();
 		}
-		Debug.Log("ending timer");
+		Debug.Log("---END GAME---");
 	}
 
 	public EnemyManager GetEnemyManager() {
@@ -37,5 +37,4 @@ public class GameManager : MonoBehaviour {
 	public LightManager GetLightManager() {
 		return lightManager;
 	}
-
 }
