@@ -5,10 +5,6 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour {
 	private GameObject[] enemies;
 
-	void Awake() {
-
-	}
-
 	void Start () {
 		enemies = GetAllEnemies();
 	}
