@@ -14,6 +14,10 @@ public class Controls : MonoBehaviour {
 				RaycastHit hit;
 
 				if (Physics.Raycast(ray, out hit)) {
+					var sun = hit.transform.GetComponent<SunManager>();
+					if (sun != null) {
+						sun.ToggleSun();
+					}
 					Debug.Log(ray + " " + hit.transform);
 				}
 			}
