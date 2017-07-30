@@ -27,6 +27,10 @@ public class FlashlightController : MonoBehaviour {
 			.GetComponent<GameManager>().GetEnemyManager();
 	}
 
+	public void RefillBattery () {
+		batteryRemaining = 100f;
+	}
+
 	/* We only expose this function to other classes to propagate
 	 flashlight state down to the 'trigger' collider and light SFX
 	 (helper functions below) */
