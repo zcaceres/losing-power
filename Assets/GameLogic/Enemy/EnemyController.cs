@@ -35,8 +35,8 @@ public class EnemyController : MonoBehaviour {
 
 	public void ShouldWander (bool wander) {
 		shouldWander = wander;
-		if(wander == false){
-			agent.destination = player.position;
+		if(!shouldWander){
+			FollowPlayer();
 		}
 	}
 
@@ -49,13 +49,17 @@ public class EnemyController : MonoBehaviour {
 						}
 				}
 		}
+
 		float dist = Vector3.Distance(agent.destination,player.position);
+
 		if(dist < 10.0f || reachedDestination) {
 			Vector3 randomLocation;
 			do {
 				randomLocation = Random.insideUnitSphere * WALK_RADIUS;
 				randomLocation.y = 0;
-			} while(!UnityEngine.AI.NavMesh.CalculatePath(transform.position,randomLocation,UnityEngine.AI.NavMesh.AllAreas,path));
+			} while(!UnityEngine.AI.NavMesh.CalculatePath(transform.position,
+							randomLocation,UnityEngine.AI.NavMesh.AllAreas,path));
+
 			agent.destination = randomLocation;
 		}
 	}
@@ -65,6 +69,7 @@ public class EnemyController : MonoBehaviour {
 			Wander();
 			return;
 		}
+		
 		if (!lit) {
 			FollowPlayer();
 		} else {

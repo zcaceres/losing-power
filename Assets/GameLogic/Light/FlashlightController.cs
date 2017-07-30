@@ -35,7 +35,15 @@ public class FlashlightController : MonoBehaviour {
 	}
 
 	protected void EnableLightTrigger (bool isOn) {
-		lightTrigger.SetActive(isOn);
+		if (isOn) {
+			lightTrigger.transform.position = new Vector3(lightTrigger.transform.position.x,
+																							0,lightTrigger.transform.position.z);
+		} else {
+			lightTrigger.transform.position = new Vector3(lightTrigger.transform.position.x,
+																							9,lightTrigger.transform.position.z);
+		}
+
+		// lightTrigger.SetActive(isOn);
 	}
 
 	protected void EnableLight (bool isOn) {
