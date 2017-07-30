@@ -8,12 +8,14 @@ public class UIManager : MonoBehaviour {
 	private GameObject survivalTimer;
 	private Text currentTime;
 	private GameObject powerplantFixer;
+	private Text battery;
 
 	void Awake () {
 		defeatIndicator = transform.Find("Defeat").gameObject;
 		survivalTimer = transform.Find("SurvivalTimer").gameObject;
 		currentTime = survivalTimer.transform.Find("Timer").GetComponent<Text>();
 		powerplantFixer = transform.Find("PowerplantFixer").gameObject;
+		battery = transform.Find("Battery/BatteryIndicator").gameObject.GetComponent<Text>();
 	}
 
 	// TODO TRIGGER WHEN COLLIDE WITH BADDIE
@@ -36,6 +38,8 @@ public class UIManager : MonoBehaviour {
 	public void StopPowerplaneGame () {
 		powerplantFixer.SetActive(false);
 	}
-}
 
-// 4.5 5.5
+	public void RenderBattery (float batteryRemaining) {
+		battery.text = batteryRemaining.ToString("#0.0");
+	}
+}

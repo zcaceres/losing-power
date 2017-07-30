@@ -3,17 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FlashlightController : MonoBehaviour {
+	private static float batteryRemaining = 5f;
+	const int DRAIN_MULTIPLIER = 10;
 	protected bool isOn = true;
 	protected GameObject lightTrigger;
 	protected GameObject lightSFX;
 	protected EnemyManager enemyManager;
+	protected UIManager uiManager;
 	protected AudioSource lightSound;
+	bool drainBattery;
 
 	void Awake () {
 		// Get child components of Flashlight prefab
 		lightTrigger = transform.Find("LightTrigger").gameObject;
 		lightSFX = transform.Find("Light").gameObject;
 		lightSound = GetComponent<AudioSource>();
+		uiManager = GameObject.FindWithTag("GameController")
+		.GetComponent<GameManager>().GetUIManager();
 	}
 
 	void Start () {
@@ -25,13 +31,37 @@ public class FlashlightController : MonoBehaviour {
 	 flashlight state down to the 'trigger' collider and light SFX
 	 (helper functions below) */
 	public virtual void ToggleLight () {
+		if (batteryRemaining <= 0) {
+			return;
+		}
 		isOn = !isOn;
 		if (!isOn) {
 			enemyManager.ReactivateEnemies();
+			drainBattery = false;
+		} else {
+			drainBattery = true;
 		}
 		lightSound.Play();
 		EnableLightTrigger(isOn);
 		EnableLight(isOn);
+	}
+
+	void ForceLightOff() {
+		isOn = false;
+		enemyManager.ReactivateEnemies();
+		drainBattery = false;
+		EnableLightTrigger(isOn);
+		EnableLight(isOn);
+	}
+
+	void Update() {
+		uiManager.RenderBattery(batteryRemaining);
+		if (drainBattery) {
+			batteryRemaining -= 0.1f * Time.deltaTime * DRAIN_MULTIPLIER;
+			if (batteryRemaining <= 0) {
+				ForceLightOff();
+			}
+		}
 	}
 
 	protected void EnableLightTrigger (bool isOn) {
@@ -39,9 +69,9 @@ public class FlashlightController : MonoBehaviour {
 		var highVal = new Vector3(lightTrigger.transform.position.x, 9, lightTrigger.transform.position.z);
 		lightTrigger.SetActive(true);
 		if (isOn) {
-			lightTrigger.transform.position = new Vector3(baseVal);
+			lightTrigger.transform.position = baseVal;
 		} else {
-			lightTrigger.transform.position = new Vector3(highVal);
+			lightTrigger.transform.position = highVal;
 		}
 	}
 
