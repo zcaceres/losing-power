@@ -6,8 +6,22 @@ public class GameManager : MonoBehaviour {
 	private static EnemyManager enemyManager;
 	private static LightManager lightManager;
 	private static UIManager uiManager;
+	public static int timeSurvived = 0;
+	public static int numOfCompletedGames = 0;
 
 	public bool isGameOver = true;
+
+	public int GetNumOfGames() {
+		return numOfCompletedGames;
+	}
+
+	public float GetTimeSurvived() {
+		return timeSurvived;
+	}
+
+	public void SetNumOfGames(int num) {
+		timeSurvived = num;
+	}
 
 	void Awake () {
 		enemyManager = GetComponent<EnemyManager>();
@@ -36,10 +50,10 @@ public class GameManager : MonoBehaviour {
 	}
 
 	IEnumerator GameTimer () {
-		var count = 0;
 		while (!isGameOver) {
 			yield return new WaitForSeconds(1);
-			uiManager.UpdateTimer(count++);
+			timeSurvived++;
+			uiManager.UpdateTimer(timeSurvived);
 		}
 	}
 

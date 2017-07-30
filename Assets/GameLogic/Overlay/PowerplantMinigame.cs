@@ -8,9 +8,12 @@ public class PowerplantMinigame : MonoBehaviour {
 	private Slider slider;
 	private bool increment;
 	const int TIME_MULTIPLIER = 15;
+	private GameManager gameManager;
 
 	void Awake () {
 		slider = transform.Find("Slider").GetComponent<Slider>();
+		gameManager = GameObject.FindWithTag("GameController")
+		.GetComponent<GameManager>();
 	}
 
 	void OnEnable () {
@@ -31,11 +34,13 @@ public class PowerplantMinigame : MonoBehaviour {
 	}
 
 	void Win () {
-		Debug.Log("YOU WIN");
+		var currNum = gameManager.GetNumOfGames();
+		gameManager.SetNumOfGames(++currNum);
 	}
 
 	void Lose () {
-		Debug.Log("YOU LOSE");
+		var currNum = gameManager.GetNumOfGames();
+		gameManager.SetNumOfGames(--currNum);
 	}
 
 	void CheckIfAtOneOrZero(float val) {
