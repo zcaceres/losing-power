@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FlashlightController : MonoBehaviour {
-	private static float batteryRemaining = 5f;
+	private static float batteryRemaining = 100f;
 	const int DRAIN_MULTIPLIER = 10;
 	protected bool isOn = true;
 	protected GameObject lightTrigger;
