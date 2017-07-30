@@ -9,12 +9,14 @@ public class EnemyController : MonoBehaviour {
 	private bool shouldWander;
 	private const int WALK_RADIUS = 50;
 	private UnityEngine.AI.NavMeshPath path;
+	private Animator anim;
 
 
 	void Awake () {
 		player = GameObject.FindWithTag("Player").transform;
 		agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
 		path = new UnityEngine.AI.NavMeshPath();
+		anim = GetComponent<Animator>();
 	}
 
 	void Start () {
@@ -27,10 +29,12 @@ public class EnemyController : MonoBehaviour {
 
 	void FollowPlayer () {
 		agent.destination = player.position;
+		anim.SetBool("isRunning", true);
 	}
 
 	void Stop () {
 		agent.destination = agent.transform.position;
+		anim.SetBool("isRunning", false);
 	}
 
 	public void ShouldWander (bool wander) {
@@ -42,6 +46,7 @@ public class EnemyController : MonoBehaviour {
 
 	void Wander () {
 		bool reachedDestination = false;
+		anim.SetBool("isRunning", true);
 		if (!agent.pathPending) {
 				if (agent.remainingDistance <= agent.stoppingDistance) {
 						if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f) {
@@ -69,7 +74,7 @@ public class EnemyController : MonoBehaviour {
 			Wander();
 			return;
 		}
-		
+
 		if (!lit) {
 			FollowPlayer();
 		} else {
