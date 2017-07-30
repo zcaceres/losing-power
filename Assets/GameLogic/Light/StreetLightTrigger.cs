@@ -7,7 +7,7 @@ public class StreetLightTrigger : LightTrigger {
 
 		// TODO Make awake method
 
-		protected virtual void OnTriggerEnter (Collider other) {
+		protected override void OnTriggerEnter (Collider other) {
 			return;
 		}
 

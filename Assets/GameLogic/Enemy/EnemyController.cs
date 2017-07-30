@@ -41,8 +41,6 @@ public class EnemyController : MonoBehaviour {
 	}
 
 	void Wander () {
-		Debug.Log("I'm wandering");
-
 		bool reachedDestination = false;
 		if (!agent.pathPending) {
 				if (agent.remainingDistance <= agent.stoppingDistance) {
@@ -53,7 +51,6 @@ public class EnemyController : MonoBehaviour {
 		}
 		float dist = Vector3.Distance(agent.destination,player.position);
 		if(dist < 10.0f || reachedDestination) {
-			Debug.Log("I'm in wander and finding a new destination");
 			Vector3 randomLocation;
 			do {
 				randomLocation = Random.insideUnitSphere * WALK_RADIUS;
