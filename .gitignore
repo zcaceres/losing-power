@@ -6,6 +6,8 @@
 /Assets/AssetStoreTools*
 Assets/Third Party
 Assets/Third Party.meta
+Assets/Prefabs/City.prefab
+Assets/Prefabs/City.prefab.meta
 
 
 # Visual Studio 2015 cache directory
