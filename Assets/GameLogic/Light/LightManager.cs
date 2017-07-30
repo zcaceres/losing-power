@@ -26,7 +26,6 @@ public class LightManager : MonoBehaviour {
 
 	public void ChangeLights() {
 		var prob = ComputeCurrentProbability();
-		Debug.Log("current prob " + prob);
 		for (var i = 0; i < lights.Length; i++) {
 			var probability = Random.Range(0f, 1.0f);
 			if (probability > prob) {

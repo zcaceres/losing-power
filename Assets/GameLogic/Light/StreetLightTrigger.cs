@@ -14,14 +14,12 @@ public class StreetLightTrigger : LightTrigger {
 
 		protected override void OnTriggerExit (Collider other) {
 			if (other.tag == "Player") {
-				Debug.Log("Player left light");
 				enemyManager.TurnOnPursuit();
 			}
 		}
 
 		void OnTriggerStay (Collider other) {
 			if (other.tag == "Player") {
-				Debug.Log("Player inside light");
 				enemyManager.ToggleWander();
 			}
 		}

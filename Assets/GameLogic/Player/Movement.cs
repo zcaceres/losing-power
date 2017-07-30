@@ -26,10 +26,5 @@ public class Movement : MonoBehaviour {
       } else {
         anim.SetBool("isMoving", false);
       }
-        // transform.Rotate(0, Input.GetAxis("Horizontal") * rotateSpeed, 0);
-        // Vector3 forward = transform.TransformDirection(Vector3.forward);
-        // float curSpeed = speed * Input.GetAxis("Vertical");
-        // controller.SimpleMove(forward * curSpeed);
-
     }
 }
