@@ -25,6 +25,7 @@ public class FlashlightController : MonoBehaviour {
 	}
 
 	void Start () {
+		ForceLightOff();
 	}
 
 	public void RefillBattery () {
