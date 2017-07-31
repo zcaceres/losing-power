@@ -20,7 +20,12 @@ public class StreetLightTrigger : LightTrigger {
 
 		void OnTriggerStay (Collider other) {
 			if (other.tag == "Player") {
-				enemyManager.ToggleWander();
+				if (enemyManager == null) {
+					enemyManager = GameObject.FindWithTag("GameController")
+					.GetComponent<GameManager>().GetEnemyManager();
+				} else {
+					enemyManager.ToggleWander();
+				}
 			}
 		}
 }

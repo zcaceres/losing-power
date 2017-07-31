@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FlashlightController : MonoBehaviour {
 	private static float batteryRemaining = 100f;
-	const int DRAIN_MULTIPLIER = 10;
+	const int DRAIN_MULTIPLIER = 30;
 	protected bool isOn = true;
 	protected GameObject lightTrigger;
 	protected GameObject lightSFX;
@@ -20,11 +20,11 @@ public class FlashlightController : MonoBehaviour {
 		lightSound = GetComponent<AudioSource>();
 		uiManager = GameObject.FindWithTag("GameController")
 		.GetComponent<GameManager>().GetUIManager();
+		enemyManager = GameObject.FindWithTag("GameController")
+		.GetComponent<GameManager>().GetEnemyManager();
 	}
 
 	void Start () {
-		enemyManager = GameObject.FindWithTag("GameController")
-			.GetComponent<GameManager>().GetEnemyManager();
 	}
 
 	public void RefillBattery () {
@@ -59,7 +59,12 @@ public class FlashlightController : MonoBehaviour {
 	}
 
 	void Update() {
-		uiManager.RenderBattery(batteryRemaining);
+		if (uiManager == null) {
+			uiManager = GameObject.FindWithTag("GameController")
+			.GetComponent<GameManager>().GetUIManager();
+		} else {
+			uiManager.RenderBattery(batteryRemaining);
+		}
 		if (drainBattery) {
 			batteryRemaining -= 0.1f * Time.deltaTime * DRAIN_MULTIPLIER;
 			if (batteryRemaining <= 0) {

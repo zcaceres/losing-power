@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33719784853532218}
   - component: {fileID: 23773965478418656}
   - component: {fileID: 65140282416010426}
+  - component: {fileID: 114391778420279410}
   m_Layer: 0
   m_Name: Battery
   m_TagString: Untagged
@@ -36,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1132034219137772}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -76.1, y: 2.82, z: -26.1}
+  m_LocalPosition: {x: -8.1, y: 2.82, z: 1.9}
   m_LocalScale: {x: 0.09, y: 0.09, z: 0.09}
   m_Children: []
   m_Father: {fileID: 0}
@@ -93,3 +94,14 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 15, y: 30, z: 15}
   m_Center: {x: 0.00000047683713, y: 0, z: 5.0786037}
+--- !u!114 &114391778420279410
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1132034219137772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08f0485f5c2f94839a123685037da80c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

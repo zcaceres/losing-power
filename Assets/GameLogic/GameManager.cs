@@ -57,6 +57,11 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
+	public void Lose () {
+	 isGameOver = true;
+	 uiManager.ShowDefeat(true);
+	}
+
 	public EnemyManager GetEnemyManager () {
 		return enemyManager;
 	}
