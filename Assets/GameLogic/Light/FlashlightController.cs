@@ -25,6 +25,7 @@ public class FlashlightController : MonoBehaviour {
 	}
 
 	void Start () {
+		lightSFX.SetActive(false);
 		ForceLightOff();
 	}
 
@@ -53,6 +54,10 @@ public class FlashlightController : MonoBehaviour {
 
 	void ForceLightOff() {
 		isOn = false;
+		if(enemyManager == null) {
+			enemyManager = GameObject.FindWithTag("GameController")
+			.GetComponent<GameManager>().GetEnemyManager();
+		}
 		enemyManager.ReactivateEnemies();
 		drainBattery = false;
 		EnableLightTrigger(isOn);
