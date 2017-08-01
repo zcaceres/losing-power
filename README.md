@@ -7,4 +7,8 @@ Made by:
 - Zach Caceres (zcaceres / @zachcaceres)
 - Nero Gao (yuangaonyc)
 
-Description and screenshots here.
+## Demo
+
+![Demo](demo.gif)
+
+Description
