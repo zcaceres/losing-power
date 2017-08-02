@@ -1,7 +1,4 @@
 # Ludem Dare 39 – Losing Power
-
-Banner image
-
 Made by:
 - Michael Noronha (mtn)
 - Zach Caceres (zcaceres / @zachcaceres)
@@ -11,4 +8,9 @@ Made by:
 
 ![Demo](demo.gif)
 
-Description
+## Description
+Made for Ludum Dare in 36 hours in July 2017. LD Theme: 'Losing Power'.
+
+In a blacked out city with flickering streetlights, players must find batteries to keep their flashlight shining – or else.
+
+Built with Unity3D.
